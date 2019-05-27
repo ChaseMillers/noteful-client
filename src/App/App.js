@@ -10,6 +10,7 @@ import AddNote from '../AddNote/AddNote'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './App.css'
+import ErrorMessage from './ErrorMessage'
 
 class App extends Component {
   state = {
@@ -95,6 +96,7 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
+        <ErrorMessage>
         {['/', '/folder/:folderId'].map(path =>
           <Route
             exact
@@ -103,18 +105,28 @@ class App extends Component {
             component={NoteListMain}
           />
         )}
+        </ErrorMessage>
+        
+        <ErrorMessage>
         <Route
           path='/note/:noteId'
           component={NotePageMain}
         />
+        </ErrorMessage>
+
+        <ErrorMessage>
         <Route
           path='/add-folder'
           component={AddFolder}
         />
+        </ErrorMessage>
+        
+        <ErrorMessage>
         <Route
           path='/add-note'
           component={AddNote}
         />
+        </ErrorMessage>
       </>
     )
   }

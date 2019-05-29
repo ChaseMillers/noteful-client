@@ -3,6 +3,7 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddFolder.css'
+import PropTypes from 'prop-types';
 
 export default class AddFolder extends Component {
   static defaultProps = {
@@ -47,7 +48,7 @@ export default class AddFolder extends Component {
             <label htmlFor='folder-name-input'>
               Name
             </label>
-            <input type='text' id='folder-name-input' name='folder-name' />
+            <input type='text' id='folder-name-input' name='folder-name' required/>
           </div>
           <div className='buttons'>
             <button type='submit'>
@@ -59,3 +60,9 @@ export default class AddFolder extends Component {
     )
   }
 }
+
+AddFolder.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.objectOf(PropTypes.string),
+  match: PropTypes.object
+  }

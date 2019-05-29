@@ -5,11 +5,13 @@ import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { countNotesForFolder } from '../notes-helpers'
 import './NoteListNav.css'
+import PropTypes from 'prop-types';
 
 export default class NoteListNav extends React.Component {
   static contextType = ApiContext;
 
   render() {
+    
     const { folders=[], notes=[] } = this.context
     return (
       <div className='NoteListNav'>
@@ -44,3 +46,9 @@ export default class NoteListNav extends React.Component {
     )
   }
 }
+
+NoteListNav.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.objectOf(PropTypes.string),
+  match: PropTypes.object
+  }
